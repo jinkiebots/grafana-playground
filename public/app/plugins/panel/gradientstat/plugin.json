@@ -1,0 +1,17 @@
+{
+  "type": "panel",
+  "name": "Gradient Stat",
+  "id": "gradientstat",
+
+  "info": {
+    "description": "Custom stat panel with gradient background and percentage change indicator",
+    "author": {
+      "name": "Custom",
+      "url": ""
+    },
+    "logos": {
+      "small": "img/icn-singlestat-panel.svg",
+      "large": "img/icn-singlestat-panel.svg"
+    }
+  }
+}

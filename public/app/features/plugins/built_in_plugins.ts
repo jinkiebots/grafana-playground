@@ -48,6 +48,8 @@ const newsPanel = async () => await import(/* webpackChunkName: "newsPanel" */ '
 const pieChartPanel = async () =>
   await import(/* webpackChunkName: "pieChartPanel" */ 'app/plugins/panel/piechart/module');
 const statPanel = async () => await import(/* webpackChunkName: "statPanel" */ 'app/plugins/panel/stat/module');
+const gradientStatPanel = async () =>
+  await import(/* webpackChunkName: "gradientStatPanel" */ 'app/plugins/panel/gradientstat/module');
 const stateTimelinePanel = async () =>
   await import(/* webpackChunkName: "stateTimelinePanel" */ 'app/plugins/panel/state-timeline/module');
 const statusHistoryPanel = async () =>
@@ -102,6 +104,7 @@ const builtInPlugins: Record<string, System.Module | (() => Promise<System.Modul
   'core:plugin/news': newsPanel,
   'core:plugin/live': livePanel,
   'core:plugin/stat': statPanel,
+  'core:plugin/gradientstat': gradientStatPanel,
   'core:plugin/datagrid': dataGridPanel,
   'core:plugin/debug': debugPanel,
   'core:plugin/flamegraph': flamegraphPanel,

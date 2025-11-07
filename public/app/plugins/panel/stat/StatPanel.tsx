@@ -1,5 +1,6 @@
+import { css, injectGlobal } from '@emotion/css';
 import { isNumber } from 'lodash';
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useEffect, useRef } from 'react';
 
 import {
   DisplayValueAlignmentFactors,
@@ -132,7 +133,73 @@ export const StatPanel = memo(
       });
     }, [data, fieldConfig, theme, options, replaceVariables, timeZone]);
 
-    return (
+    // Custom styling for gradient backgrounds and additional text
+    const customGradient = (options as any).customGradient;
+    const customBackground = (options as any).customBackground;
+    const customBottomText = (options as any).customBottomText;
+    const customBottomTextColor = (options as any).customBottomTextColor;
+    const customTitleColor = (options as any).customTitleColor;
+
+    const wrapperRef = useRef<HTMLDivElement>(null);
+
+    // Apply custom background to panel header
+    useEffect(() => {
+      if ((customGradient || customBackground) && wrapperRef.current) {
+        const background = customGradient || customBackground;
+
+        // Find the panel container by traversing up
+        let element: HTMLElement | null = wrapperRef.current;
+        let attempts = 0;
+
+        while (element && attempts < 10) {
+          element = element.parentElement;
+          attempts++;
+
+          // Look for panel chrome container
+          if (element) {
+            // Try to find header in this container
+            const header = element.querySelector('[class*="panel-header"]') as HTMLElement;
+            const titleBar = element.querySelector('[class*="panel-title"]')?.parentElement as HTMLElement;
+            const titleText = element.querySelector('[class*="panel-title"]') as HTMLElement;
+
+            if (header) {
+              header.style.background = background;
+              header.style.borderBottom = 'none';
+            }
+
+            if (titleBar && titleBar !== header) {
+              titleBar.style.background = background;
+            }
+
+            if (titleText && customTitleColor) {
+              titleText.style.color = customTitleColor;
+            }
+
+            // Find panel-content
+            const panelContent = element.querySelector('[class*="panel-content"]') as HTMLElement;
+            if (panelContent) {
+              panelContent.style.background = background;
+            }
+
+            // If we found any of these, we're done
+            if (header || titleBar || panelContent) {
+              break;
+            }
+          }
+        }
+      }
+    }, [customGradient, customBackground, customTitleColor, renderCounter]);
+
+    const wrapperStyle = (customGradient || customBackground)
+      ? css({
+          background: customGradient || customBackground,
+          height: '100%',
+          width: '100%',
+          position: 'relative',
+        })
+      : undefined;
+
+    const content = (
       <VizRepeater
         getValues={getValues}
         getAlignmentFactors={getDisplayValueAlignmentFactors}
@@ -146,6 +213,32 @@ export const StatPanel = memo(
         orientation={options.orientation}
       />
     );
+
+    if (wrapperStyle || customBottomText) {
+      return (
+        <div ref={wrapperRef} className={wrapperStyle} style={{ height: '100%', width: '100%', position: 'relative' }}>
+          {content}
+          {customBottomText && (
+            <div
+              style={{
+                position: 'absolute',
+                bottom: '20px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                color: customBottomTextColor || 'white',
+                fontSize: '18px',
+                fontWeight: 600,
+                opacity: 1,
+              }}
+            >
+              {customBottomText}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    return <div ref={wrapperRef}>{content}</div>;
   }
 );
 StatPanel.displayName = 'StatPanel';
