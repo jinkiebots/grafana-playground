@@ -152,7 +152,7 @@ jobs:
           done
           exit $EXIT_CODE
       - name: Output test profiles and traces
-        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v4
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v4
         if: (matrix.shard == 'profiled' && !cancelled())
         with:
           name: integration-test-profiles-sqlite-nocgo-${{ github.run_number }}
