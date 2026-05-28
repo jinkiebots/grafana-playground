@@ -7,7 +7,7 @@ require (
 	github.com/grafana/grafana/pkg/apimachinery v0.0.0-20250710134100-1f3dc0533caf
 	github.com/stretchr/testify v1.11.1
 	google.golang.org/grpc v1.76.0
-	google.golang.org/protobuf v1.36.10
+	google.golang.org/protobuf v1.36.11
 	gopkg.in/yaml.v3 v3.0.1
 	k8s.io/apimachinery v0.34.1
 	k8s.io/kube-openapi v0.0.0-20250910181357-589584f1c912
