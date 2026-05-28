@@ -21,7 +21,7 @@ require (
 	github.com/evanphx/json-patch v5.9.11+incompatible // indirect
 	github.com/fxamacker/cbor/v2 v2.9.0 // indirect
 	github.com/getkin/kin-openapi v0.133.0 // indirect
-	github.com/go-jose/go-jose/v4 v4.1.2 // indirect
+	github.com/go-jose/go-jose/v4 v4.1.4 // indirect
 	github.com/go-logr/logr v1.4.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-openapi/jsonpointer v0.22.1 // indirect
@@ -73,7 +73,6 @@ require (
 	go.opentelemetry.io/proto/otlp v1.7.1 // indirect
 	go.yaml.in/yaml/v2 v2.4.3 // indirect
 	go.yaml.in/yaml/v3 v3.0.4 // indirect
-	golang.org/x/crypto v0.43.0 // indirect
 	golang.org/x/net v0.46.0 // indirect
 	golang.org/x/oauth2 v0.32.0 // indirect
 	golang.org/x/sync v0.17.0 // indirect
