@@ -116,7 +116,7 @@ require (
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.27.2 // @grafana/identity-access-team
 	github.com/hashicorp/go-hclog v1.6.3 // @grafana/plugins-platform-backend
 	github.com/hashicorp/go-multierror v1.1.1 // @grafana/alerting-squad
-	github.com/hashicorp/go-plugin v1.7.0 // @grafana/plugins-platform-backend
+	github.com/hashicorp/go-plugin v1.8.0 // @grafana/plugins-platform-backend
 	github.com/hashicorp/go-secure-stdlib/plugincontainer v0.4.2 // @grafana/plugins-platform-backend
 	github.com/hashicorp/go-version v1.7.0 // @grafana/grafana-backend-group
 	github.com/hashicorp/golang-lru/v2 v2.0.7 // @grafana/alerting-backend
